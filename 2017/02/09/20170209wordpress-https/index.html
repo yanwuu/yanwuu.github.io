@@ -40,7 +40,7 @@
 
   
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -196,7 +196,7 @@
 <span id="more"></span>
 
 
-<p>然后找到你站点的配置文件，应该在/usr/local/nginx/conf/vhost目录下，目录下的website.conf就是站点的配置文件了。</p>
+<p>然后找到你站点的配置文件，应该在&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;vhost目录下，目录下的website.conf就是站点的配置文件了。</p>
 <pre class="lang:default decode:true">server
       {
         listen 443;
@@ -246,17 +246,17 @@
 在http的server里增加<code>rewrite ^(.*) https://$host$1 permanent;</code>
 这样就可以实现80进来的请求，重定向为https了。
 
-<p>修改完配置文件后，重启一下nginx就可以访问了。/etc/init.d/nginx restart</p>
+<p>修改完配置文件后，重启一下nginx就可以访问了。&#x2F;etc&#x2F;init.d&#x2F;nginx restart</p>
 <p>虽然有了整站的重定向，但我们不妨还是将 WordPress 本身自带的功能打开</p>
 <p>找到网站根目录，修改文件 config.php，直接在这个文件的末尾另起一行，追加两行代码：</p>
-<p>&nbsp;</p>
-<p>/* 强制后台和登录使用 SSL */</p>
+<p>&amp;nbsp;</p>
+<p>&#x2F;* 强制后台和登录使用 SSL *&#x2F;</p>
 <p>define(‘FORCE_SSL_LOGIN’, true);</p>
 <p>define(‘FORCE_SSL_ADMIN’, true);</p>
-<p>&nbsp;</blockquote><br>最主要的可能就是图片的问题了，你在上传到空间的附件都被 WordPress 标记为了绝对链接，而且全都妥妥的写入了 “http://”。一般来讲，是需要用数据库替换的，不过这种方法有点小危险，我这里给你推荐另外一个不错的选择：使用代码让 WordPress 在加载附件之前将链接替换就好了！——毕竟，只是协议的问题，跟路径没有半毛钱的关系~</p>
+<p>&amp;nbsp;</blockquote><br>最主要的可能就是图片的问题了，你在上传到空间的附件都被 WordPress 标记为了绝对链接，而且全都妥妥的写入了 “http:&#x2F;&#x2F;”。一般来讲，是需要用数据库替换的，不过这种方法有点小危险，我这里给你推荐另外一个不错的选择：使用代码让 WordPress 在加载附件之前将链接替换就好了！——毕竟，只是协议的问题，跟路径没有半毛钱的关系~</p>
 <p>（我希望你使用了 WordPress 的子主题功能……）</p>
 <p>找到当前主题下的 function.php 文件，编辑之，在里边代码的末尾追加如下代码：</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>/* 替换图片链接为 https */<br>function my_content_manipulator($content){<br>    if( is_ssl() ){<br>        $content = str_replace(‘<a target="_blank" rel="noopener" href="http://www.logcg.com/wp-content/uploads&#39;">http://www.logcg.com/wp-content/uploads&#39;</a>, ‘<a target="_blank" rel="noopener" href="https://www.logcg.com/wp-content/uploads&#39;">https://www.logcg.com/wp-content/uploads&#39;</a>, $content);<br>    }<br>    return $content;<br>}<br>add_filter(‘the_content’, ‘my_content_manipulator’);<br>另外，除了这个大头意外，你还需要关心站内的各种内链：</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>&#x2F;* 替换图片链接为 https *&#x2F;<br>function my_content_manipulator($content){<br>    if( is_ssl() ){<br>        $content &#x3D; str_replace(‘<a target="_blank" rel="noopener" href="http://www.logcg.com/wp-content/uploads">http://www.logcg.com/wp-content/uploads</a>‘, ‘<a target="_blank" rel="noopener" href="https://www.logcg.com/wp-content/uploads">https://www.logcg.com/wp-content/uploads</a>‘, $content);<br>    }<br>    return $content;<br>}<br>add_filter(‘the_content’, ‘my_content_manipulator’);<br>另外，除了这个大头意外，你还需要关心站内的各种内链：</p>
 <p>修改“菜单”当中的所有“自定义链接”为相对路径；<br>修改“设置”→“常规”里的“站点地址”和“WordPress 地址”为 HTTPS；<br>修改其他自己手贱写入的绝对链接地址……</p>
 
       
@@ -426,7 +426,7 @@
     <div class="outer">
       <div id="footer-info">
           <div class="footer-left">
-              &copy; 2022 kihsu
+              &copy; 2023 kihsu
           </div>
               <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
               <span style="line-height: 24px;" id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
@@ -547,14 +547,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">吐槽</a>
               </li>
              
@@ -567,11 +559,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">wedsite</a>
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wall</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,15 +571,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color3">wedsite</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">macos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">download</a>
+                <a href="javascript:void(0)" class="js-tag color5">wall</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -599,7 +587,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
+                <a href="javascript:void(0)" class="js-tag color1">macos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">download</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,7 +599,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">摘抄</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,15 +627,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">转载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">转载</a>
               </li>
              
               <li class="article-tag-list-item">

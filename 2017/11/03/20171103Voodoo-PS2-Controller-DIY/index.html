@@ -38,7 +38,7 @@
 
   
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -190,7 +190,7 @@
 
 <p>发现了这些</p>
 <blockquote>
-<p>VoodooPS2Controller.kext/Contents/PlugIns/VoodooPS2Keyboard/Contents/Info.plist 中，分别有一个数据段用来配置上述的重映射操作。如果你使用Finder，可以通过右键，然后选择“显示包内容”来打开kext驱动。</p>
+<p>VoodooPS2Controller.kext&#x2F;Contents&#x2F;PlugIns&#x2F;VoodooPS2Keyboard&#x2F;Contents&#x2F;Info.plist 中，分别有一个数据段用来配置上述的重映射操作。如果你使用Finder，可以通过右键，然后选择“显示包内容”来打开kext驱动。</p>
 </blockquote>
 <blockquote>
 <p>特别注意Info.plist文件的以下数据段：</p>
@@ -213,18 +213,18 @@
 <p>这个部分表示将Fn+fkeys和正常的fkeys的扫描码进行交换。这个array标签中的每个string对一个扫描码进行重映射。扫描码用十六进制表示，这个数值与你在voodoo kext的Debug版本看到的完全一致。这个数据段使用的是PS2扫描码至PS2扫描码映射的功能实现的。它也可以使用PS2扫描码至ADB码实现。但是除非你能阅读源码，否则不容易操作ADB码。在这里，我们只希望能够将一个按键映射为另一个，所以使用PS2至PS2扫描码映射实现就可以了。</p>
 </blockquote>
 <blockquote>
-<p>看看这组映射的第一项： e05f=3b。每个映射条目遵循模式：scanFrom=scanTo。在HP 4530s的键盘上，e05f是按键Fn+F1的扫描码（其他键盘可能有所不同），3b是按键F1的扫描码。所以这一项将按键Fn+F1映射至F1。注释行以分号（;）开始。扫描码可以是普通扫描码或扩展扫描码。以e0开始（如前面所说的e05f）的表示一个扩展扫描码。当把扫描码发送至驱动时，一次只会发送一个字节。所以当发送一个扩展扫描码时，首先会发送“e0”，接着才是具体的按键扫描码。当在检查调试输出时，你会分别看到这些项目。</p>
+<p>看看这组映射的第一项： e05f&#x3D;3b。每个映射条目遵循模式：scanFrom&#x3D;scanTo。在HP 4530s的键盘上，e05f是按键Fn+F1的扫描码（其他键盘可能有所不同），3b是按键F1的扫描码。所以这一项将按键Fn+F1映射至F1。注释行以分号（;）开始。扫描码可以是普通扫描码或扩展扫描码。以e0开始（如前面所说的e05f）的表示一个扩展扫描码。当把扫描码发送至驱动时，一次只会发送一个字节。所以当发送一个扩展扫描码时，首先会发送“e0”，接着才是具体的按键扫描码。当在检查调试输出时，你会分别看到这些项目。</p>
 </blockquote>
 <blockquote>
 <p>上面贴出的配置中的最后一个条目是将按键F12映射为Fn+F12。</p>
 </blockquote>
 <blockquote>
-<p>如果你想要移除任何一组映射，直接删除Info.plist中对应行即可。在编辑Info.plist前，最好将整个驱动从/System/Library/Extensions拷贝出来。当完成编辑时，把Info.plist文件保存在该处，然后重新安装整个驱动。当然，也可以直接编辑安装好的驱动中的Info.plist文件，但这里不讨论这个问题。如果你不知道如何操作，则遵循以上的建议。</p>
+<p>如果你想要移除任何一组映射，直接删除Info.plist中对应行即可。在编辑Info.plist前，最好将整个驱动从&#x2F;System&#x2F;Library&#x2F;Extensions拷贝出来。当完成编辑时，把Info.plist文件保存在该处，然后重新安装整个驱动。当然，也可以直接编辑安装好的驱动中的Info.plist文件，但这里不讨论这个问题。如果你不知道如何操作，则遵循以上的建议。</p>
 </blockquote>
 <blockquote>
 <p>你可以通过文件编辑器或plist文件编辑器来编辑Info.plist文件。如果你使用文件编辑器的话，你必须很仔细地遵守XML文件的语法规则。苹果的Xcode开发环境包含了一个plist文件编辑器，而且我确定也会有其他免费的plist文件编辑器。</p>
 </blockquote>
-<h1 id="看了这些你会发现还是不太懂"><a href="#看了这些你会发现还是不太懂" class="headerlink" title="看了这些你会发现还是不太懂"></a>看了这些你会发现还是不太懂</h1><p>下载 <a target="_blank" rel="noopener" href="https://bitbucket.org/RehabMan/os-x-ioio/downloads/">OS-X-ioio</a>，执行：<br>         ioio -s ApplePS2Keyboard LogScanCodes 1<br>按下功能键（例如：F1），用控制台应用搜索ApplePS2Keyboard看看是否有如下日志输出，如果有，说明功能键受PS/2控制，可以继续下去。例如：<br>    ApplePS2Keyboard: sending key e020=4a down<br><em><strong>然后记录好自己的每个映射</strong></em><br>根据<a target="_blank" rel="noopener" href="https://github.com/RehabMan/OS-X-Voodoo-PS2-Controller/blob/master/VoodooPS2Keyboard/ApplePS2ToADBMap.h">ADBMAP</a>做好映射，然后修改VoodooPS2Controller.kext/Contents/PlugIns/VoodooPS2Keyboard/Contents/Info.plist<br>例如：<br>                        <key>Custom PS2 Map</key><br>                    <array><br>                        <string>3b=e020</string><br>                        <string>3c=e02e</string><br>                        <string>3d=e030</string><br>                        <string>3e=e04f</string><br>                        <string>40=e073</string><br>                        <string>41=e05f</string><br>                        <string>42=e06d</string><br>                        <string>44=e06a</string><br>                        <string>;Items must be strings in the form of scanfrom=scanto (in hex)</string><br>                        <string>e027=0;disable discrete fnkeys toggle</string><br>                        <string>e028=0;disable discrete trackpad toggle</string><br>                    </array></p>
+<h1 id="看了这些你会发现还是不太懂"><a href="#看了这些你会发现还是不太懂" class="headerlink" title="看了这些你会发现还是不太懂"></a>看了这些你会发现还是不太懂</h1><p>下载 <a target="_blank" rel="noopener" href="https://bitbucket.org/RehabMan/os-x-ioio/downloads/">OS-X-ioio</a>，执行：<br>         ioio -s ApplePS2Keyboard LogScanCodes 1<br>按下功能键（例如：F1），用控制台应用搜索ApplePS2Keyboard看看是否有如下日志输出，如果有，说明功能键受PS&#x2F;2控制，可以继续下去。例如：<br>    ApplePS2Keyboard: sending key e020&#x3D;4a down<br><em><strong>然后记录好自己的每个映射</strong></em><br>根据<a target="_blank" rel="noopener" href="https://github.com/RehabMan/OS-X-Voodoo-PS2-Controller/blob/master/VoodooPS2Keyboard/ApplePS2ToADBMap.h">ADBMAP</a>做好映射，然后修改VoodooPS2Controller.kext&#x2F;Contents&#x2F;PlugIns&#x2F;VoodooPS2Keyboard&#x2F;Contents&#x2F;Info.plist<br>例如：<br>                        <key>Custom PS2 Map</key><br>                    <array><br>                        <string>3b&#x3D;e020</string><br>                        <string>3c&#x3D;e02e</string><br>                        <string>3d&#x3D;e030</string><br>                        <string>3e&#x3D;e04f</string><br>                        <string>40&#x3D;e073</string><br>                        <string>41&#x3D;e05f</string><br>                        <string>42&#x3D;e06d</string><br>                        <string>44&#x3D;e06a</string><br>                        <string>;Items must be strings in the form of scanfrom&#x3D;scanto (in hex)</string><br>                        <string>e027&#x3D;0;disable discrete fnkeys toggle</string><br>                        <string>e028&#x3D;0;disable discrete trackpad toggle</string><br>                    </array></p>
 <p>##修改后重启电脑，就会变成你想要的键位了。</p>
 <p>#不过一旦Voodoo-PS2-Controller升级就会非常麻烦 我们可以在ssdt中修改。</p>
 <pre><code>/*
@@ -234,7 +234,7 @@
 * 
 * Disassembling to non-symbolic legacy ASL operators
 *
-* Disassembly of iASLJ4Iwbu.aml, Fri Nov  3 14:18:59     2017
+* Disassembly of iASLJ4Iwbu.aml, Fri Nov  3 14:18:59 	2017
  *
  * Original Table Header:
  *     Signature        &quot;SSDT&quot;
@@ -247,7 +247,7 @@
 *     Compiler ID      &quot;INTL&quot;
 *     Compiler Version 0x20161117 (538317079)
  */
-DefinitionBlock (&quot;&quot;, &quot;SSDT&quot;, 2, &quot;hack&quot;, &quot;KBD0&quot;,     0x00000000)
+DefinitionBlock (&quot;&quot;, &quot;SSDT&quot;, 2, &quot;hack&quot;, &quot;KBD0&quot;, 	0x00000000)
     &#123;
 External (_SB_.PCI0, DeviceObj)    // (from opcode)
 External (_SB_.PCI0.LPCB, DeviceObj)    // (from opcode)
@@ -596,7 +596,7 @@ Scope (_SB.PCI0.LPCB.EC)
     <div class="outer">
       <div id="footer-info">
           <div class="footer-left">
-              &copy; 2022 kihsu
+              &copy; 2023 kihsu
           </div>
               <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
               <span style="line-height: 24px;" id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
@@ -717,14 +717,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">吐槽</a>
               </li>
              
@@ -737,11 +729,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">wedsite</a>
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wall</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -749,15 +741,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color3">wedsite</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">macos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">download</a>
+                <a href="javascript:void(0)" class="js-tag color5">wall</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -769,7 +757,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
+                <a href="javascript:void(0)" class="js-tag color1">macos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">download</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -777,7 +769,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">摘抄</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -797,15 +797,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">转载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">转载</a>
               </li>
              
               <li class="article-tag-list-item">

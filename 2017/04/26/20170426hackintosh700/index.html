@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://kihsu.me">
   <title>Lenovo xiaoxin700  hackintosh安装手记。 | kihsu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="好久好久之前就想写一篇了，可是我太懒了。  说明，这是在小新700上的黑苹果安装过程，目前驱动良好，已知bug为        1.未测试HDMI 不知道能不能启动       2.在手动睡眠唤醒后可能会出现无声音。请拔掉电源再睡一次就好（自动睡眠后唤醒是不会    有问题的）    3.笔记本键盘的FN键为静音键，为了更好的使用请BIOS关掉hotkey模式。    4.安装10.12.5后用K">
+  <meta name="description" content="好久好久之前就想写一篇了，可是我太懒了。  说明，这是在小新700上的黑苹果安装过程，目前驱动良好，已知bug为        1.未测试HDMI 不知道能不能启动       2.在手动睡眠唤醒后可能会出现无声音。请拔掉电源再睡一次就好（自动睡眠后唤醒是不会	有问题的）    3.笔记本键盘的FN键为静音键，为了更好的使用请BIOS关掉hotkey模式。    4.安装10.12.5后用Kext">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lenovo xiaoxin700  hackintosh安装手记。">
 <meta property="og:url" content="https://kihsu.me/2017/04/26/20170426hackintosh700/index.html">
 <meta property="og:site_name" content="kihsu&#39;s blog">
-<meta property="og:description" content="好久好久之前就想写一篇了，可是我太懒了。  说明，这是在小新700上的黑苹果安装过程，目前驱动良好，已知bug为        1.未测试HDMI 不知道能不能启动       2.在手动睡眠唤醒后可能会出现无声音。请拔掉电源再睡一次就好（自动睡眠后唤醒是不会    有问题的）    3.笔记本键盘的FN键为静音键，为了更好的使用请BIOS关掉hotkey模式。    4.安装10.12.5后用K">
+<meta property="og:description" content="好久好久之前就想写一篇了，可是我太懒了。  说明，这是在小新700上的黑苹果安装过程，目前驱动良好，已知bug为        1.未测试HDMI 不知道能不能启动       2.在手动睡眠唤醒后可能会出现无声音。请拔掉电源再睡一次就好（自动睡眠后唤醒是不会	有问题的）    3.笔记本键盘的FN键为静音键，为了更好的使用请BIOS关掉hotkey模式。    4.安装10.12.5后用Kext">
 <meta property="og:locale">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/cdfad3c6ly1fgaldsdn30j20g0067dg4.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/cdfad3c6ly1fgaldsdn30j20g0067dg4.jpg">
@@ -35,8 +35,8 @@
 <meta property="article:published_time" content="2017-04-25T16:42:00.000Z">
 <meta property="article:modified_time" content="2018-07-07T10:18:26.000Z">
 <meta property="article:author" content="kihsu">
-<meta property="article:tag" content="学习">
 <meta property="article:tag" content="随笔">
+<meta property="article:tag" content="学习">
 <meta property="article:tag" content="hackintosh">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/cdfad3c6ly1fgaldsdn30j20g0067dg4.jpg">
@@ -57,7 +57,7 @@
 
   
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -203,7 +203,7 @@
       
         <p>好久好久之前就想写一篇了，可是我太懒了。</p>
 <hr>
-<p>说明，这是在小新700上的黑苹果安装过程，目前驱动良好，已知bug为<br>        1.未测试HDMI 不知道能不能启动<br>       2.在手动睡眠唤醒后可能会出现无声音。请拔掉电源再睡一次就好（自动睡眠后唤醒是不会    有问题的）<br>    3.笔记本键盘的FN键为静音键，为了更好的使用请BIOS关掉hotkey模式。<br>    4.安装10.12.5后用Kext Utility添加CodecCommander.kext驱动文件，即可修复耳机杂音<br>        5.我的网卡已经更换为BMC94352Z（联想白名单版） 如果也更换了无需额外驱动</p>
+<p>说明，这是在小新700上的黑苹果安装过程，目前驱动良好，已知bug为<br>        1.未测试HDMI 不知道能不能启动<br>       2.在手动睡眠唤醒后可能会出现无声音。请拔掉电源再睡一次就好（自动睡眠后唤醒是不会	有问题的）<br>    3.笔记本键盘的FN键为静音键，为了更好的使用请BIOS关掉hotkey模式。<br>    4.安装10.12.5后用Kext Utility添加CodecCommander.kext驱动文件，即可修复耳机杂音<br>        5.我的网卡已经更换为BMC94352Z（联想白名单版） 如果也更换了无需额外驱动</p>
 <span id="more"></span>
 
 
@@ -214,7 +214,9 @@
 <p><img src="https://ws1.sinaimg.cn/large/cdfad3c6ly1fgaldsdn30j20g0067dg4.jpg" alt="![2][">2]</p>
 <ol>
 <li>刻录好之后，把U盘拔了然后插上，会发现有一个EFI的盘，打开，打开EFI文件夹，将其中的所有文件删除，将小新700EFI内的Clover和boot放进去；<br><img src="https://ws1.sinaimg.cn/large/cdfad3c6ly1fgaldsdn30j20g0067dg4.jpg" alt="3"></li>
-<li>关机，通过侧边的一键还原按钮进入BIOS，在security中把security boot关闭；boot调成uefi，不要**  Legacy Support  **<h2 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h2></li>
+<li>关机，通过侧边的一键还原按钮进入BIOS，在security中把security boot关闭；boot调成uefi，不要**  Legacy Support  **</li>
+</ol>
+<h2 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h2><ol start="3">
 <li>关机，通过侧边的一键还原按钮进入boot menu，移动光标到U盘，回车，会进入四叶草引导界面；<img src="http://pcs4.clubstatic.lenovo.com.cn/data/attachment/forum/201704/18/232057djtg1b1l2n1tqbaf.jpg.thumb.jpg" alt="4"></li>
 <li>然后进入clover后选择options-congig-congig_install。<br><img src="https://www.kihsu.me/usr/uploads/2017/06/327493267.jpg" alt="IMG_20170606_185534.jpg"><br><img src="https://www.kihsu.me/usr/uploads/2017/06/3972589261.jpg" alt="IMG_20170606_185522.jpg"></li>
 </ol>
@@ -224,10 +226,13 @@
 <li>选择磁盘工具程式，选择你要安装的硬盘，选择清除，会弹出一个窗口，名称随便改，下面不要动，清楚后叉 掉磁盘工具程式，点击安装OS，一路点击继续，并把系统装在刚刚清除的那个磁碟上<br><img src="http://pcs4.clubstatic.lenovo.com.cn/data/attachment/forum/201704/15/114413fublyucucc31bcy3.jpg.thumb.jpg" alt="请输入图片描述"><img src="http://pcs4.clubstatic.lenovo.com.cn/data/attachment/forum/201704/15/114234mnnnrn79ruzma7ag.jpg.thumb.jpg" alt="请输入图片描述"><br><img src="http://pcs4.clubstatic.lenovo.com.cn/data/attachment/forum/201704/15/114256gxxu2wq959wq9qix.jpg.thumb.jpg" alt="请输入图片描述"> <img src="http://pcs4.clubstatic.lenovo.com.cn/data/attachment/forum/201704/15/114327n9q7z1rc3t791y3o.jpg.thumb.jpg" alt="9"><br><img src="http://pcs4.clubstatic.lenovo.com.cn/data/attachment/forum/201704/15/114441o3gsddzedkjudrtd.jpg.thumb.jpg" alt="请输入图片描述"><img src="http://pcs4.clubstatic.lenovo.com.cn/data/attachment/forum/201704/15/114513b434rpp32gxg9pph.jpg.thumb.jpg" alt="请输入图片描述"></li>
 <li>进入安装界面，此过程会卡在最后一秒２０分钟最后，所以一定要有耐心！！！<img src="http://pcs4.clubstatic.lenovo.com.cn/data/attachment/forum/201704/15/114529v1ktkrtq7rrq7h51.jpg.thumb.jpg" alt="请输入图片描述"></li>
 <li>装好之后，重复步骤（因为第一次安装是复制文件，第二次安装才是真真正正的安装！一共安装两次）<br><img src="http://pcs4.clubstatic.lenovo.com.cn/data/attachment/forum/201704/15/114542tyjzjy89z8ir48zy.jpg.thumb.jpg" alt="请输入图片描述"></li>
-<li>装好之后根据引导选择国家，键盘布局，输入方式，apple　id有的话就输入，没有的话先选择不要登入，继续建立电脑账号，密码是你登录密码，建议不要太麻烦，到这里黑苹果安装完毕。<img src="https://www.kihsu.me/usr/uploads/2017/06/2505043763.png" alt="装好之后"><h2 id="安装完成"><a href="#安装完成" class="headerlink" title="安装完成"></a>安装完成</h2></li>
-<li>别忘了重建一遍缓存</li>
-<li>你需要把你U盘里的引导放到硬盘的EFI  然后用clover congigurator挂载EFI <a target="_blank" rel="noopener" href="http://mackie100projects.altervista.org/">下载链接</a><br><img src="https://www.kihsu.me/usr/uploads/2017/06/3466625413.jpg" alt="EF18F400-471A-46E0-8775-ACDF636C37B7.png.jpg"><br><img src="https://www.kihsu.me/usr/uploads/2017/06/2922519061.png" alt="QQ20170608-131528.png"><br>然后安装完重启<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2>本文只是写的我自己的安装过程，部分图片借用了<a target="_blank" rel="noopener" href="http://club.lenovo.com.cn/thread-2009205-1-1.html">联想论坛</a>的教程。如果有什么问题欢迎留言</li>
+<li>装好之后根据引导选择国家，键盘布局，输入方式，apple　id有的话就输入，没有的话先选择不要登入，继续建立电脑账号，密码是你登录密码，建议不要太麻烦，到这里黑苹果安装完毕。<img src="https://www.kihsu.me/usr/uploads/2017/06/2505043763.png" alt="装好之后"></li>
 </ul>
+<h2 id="安装完成"><a href="#安装完成" class="headerlink" title="安装完成"></a>安装完成</h2><ul>
+<li>别忘了重建一遍缓存</li>
+<li>你需要把你U盘里的引导放到硬盘的EFI  然后用clover congigurator挂载EFI <a target="_blank" rel="noopener" href="http://mackie100projects.altervista.org/">下载链接</a><br><img src="https://www.kihsu.me/usr/uploads/2017/06/3466625413.jpg" alt="EF18F400-471A-46E0-8775-ACDF636C37B7.png.jpg"><br><img src="https://www.kihsu.me/usr/uploads/2017/06/2922519061.png" alt="QQ20170608-131528.png"><br>然后安装完重启</li>
+</ul>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>   本文只是写的我自己的安装过程，部分图片借用了<a target="_blank" rel="noopener" href="http://club.lenovo.com.cn/thread-2009205-1-1.html">联想论坛</a>的教程。如果有什么问题欢迎留言</p>
 
       
 
@@ -255,11 +260,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -400,7 +405,7 @@
     <div class="outer">
       <div id="footer-info">
           <div class="footer-left">
-              &copy; 2022 kihsu
+              &copy; 2023 kihsu
           </div>
               <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
               <span style="line-height: 24px;" id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
@@ -521,14 +526,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">吐槽</a>
               </li>
              
@@ -541,11 +538,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">wedsite</a>
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wall</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,15 +550,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color3">wedsite</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">macos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">download</a>
+                <a href="javascript:void(0)" class="js-tag color5">wall</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,7 +566,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
+                <a href="javascript:void(0)" class="js-tag color1">macos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">download</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,7 +578,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">摘抄</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,15 +606,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">转载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">转载</a>
               </li>
              
               <li class="article-tag-list-item">
